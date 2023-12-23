@@ -1,0 +1,220 @@
+@import "https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700";
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Montserrat, sans-serif;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: max-content 1fr .2fr;
+    height: 100vh;
+    width: 100vw;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.sector {
+    border: 0.2rem solid #53ffd1;
+}
+
+.header {
+    font-size: 1.5rem;
+    grid-column: 1/3;
+}
+
+.graph-block {
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+
+.header .container {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+}
+
+.graph-block .container {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.values-block .container {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.table-block .container {
+    position: relative;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.area-wrapper {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    align-self: center;
+    justify-self: center;
+    object-position: center;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.area-wrapper img {
+    width: 100%;
+    height: 100%;
+}
+
+.block-header {
+    text-align: center;
+    align-self: start;
+    text-transform: uppercase;
+    padding: .7rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    background-color: #53ffd1;
+}
+
+.table {
+    overflow: scroll;
+}
+
+.table table {
+    width: 100%;
+    overflow: hidden;
+    border-collapse: collapse;
+}
+
+.table table th, .table table td {
+    text-align: center;
+    padding: .7rem 2rem;
+}
+
+.table table tr {
+    border-bottom: 0.2rem solid #53ffd1;
+}
+
+.name, .option {
+    font-size: 1.5rem;
+}
+
+.values-block {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+#values-form {
+    display: grid;
+    padding: 2.5rem 1rem 1rem;
+    grid-template-rows: 1fr auto;
+}
+
+.values {
+    display: grid;
+    gap: 1rem;
+    align-self: center;
+}
+
+.values-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.value-choose-block {
+    display: grid;
+    grid-auto-flow: column;
+    justify-self: center;
+}
+
+.values:nth-child(1) .value-choose-block {
+    gap: 1rem;
+}
+
+.value {
+    display: grid;
+    justify-items: center;
+    gap: .2rem;
+}
+
+.value-text {
+    font-size: .8rem;
+}
+
+button {
+    outline: none;
+    cursor: pointer;
+    border: 0;
+}
+
+.buttons {
+    display: grid;
+    gap: .5rem;
+}
+
+.buttons button {
+    background: #53ffd1;
+    padding: .5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background .3s;
+}
+
+.buttons button:active {
+    background: #00eaff;
+}
+
+.error {
+    padding: 1rem 0;
+    color: red;
+    height: 3rem;
+    font-weight: 700;
+    justify-self: center;
+}
+
+.error-text {
+    display: none;
+}
+
+input {
+    cursor: pointer;
+}
+
+input[type=text] {
+    padding: 5% 3%;
+    outline: none;
+    border: 0.15rem solid #53ffd1;
+    cursor: text;
+}
+
+input[type=text]:focus {
+    border-color: #00e6ff;
+}
+
+.dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #8b0000;
+    pointer-events: none;
+}
+
+.table-block {
+    display: none;
+    overflow: scroll;
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+.buttons-block{
+    display: none;
+    grid-column: 1/3;
+}
