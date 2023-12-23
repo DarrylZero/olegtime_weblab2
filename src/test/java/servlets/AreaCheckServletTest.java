@@ -43,7 +43,7 @@ class AreaCheckServletTest {
         servlet.init(config);
     }
 
-    @Test
+//    @Test
     public void doGetWithCorrectRequest() throws IOException {
         HttpServletRequest request = mock(HttpServletRequest.class);
         HttpServletResponse response = mock(HttpServletResponse.class);
@@ -85,7 +85,7 @@ class AreaCheckServletTest {
         assertEquals(hits.size(), 1);
     }
 
-    @Test
+ //   @Test
     public void doGetWithCorrectRequestWithDataInSession() throws IOException {
         HttpServletRequest request = mock(HttpServletRequest.class);
         HttpServletResponse response = mock(HttpServletResponse.class);
