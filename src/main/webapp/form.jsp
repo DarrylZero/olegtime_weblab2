@@ -39,15 +39,9 @@
                         <div class="value-header">X</div>
                         <div class="value-choose-block" id="buttonsX">
                             <input type="hidden" name="xVal"/>
-                            <button onclick="setValue(-4)">-4</button>
-                            <button onclick="setValue(-3)">-3</button>
-                            <button onclick="setValue(-2)">-2</button>
-                            <button onclick="setValue(-1)">-1</button>
-                            <button onclick="setValue(0)">0</button>
-                            <button onclick="setValue(1)">1</button>
-                            <button onclick="setValue(2)">2</button>
-                            <button onclick="setValue(3)">3</button>
-                            <button onclick="setValue(4)">4</button>
+                            <% for (int i = -4; i <= 4; i++) { %>
+                               <button onclick="setValue(<%= i %>)"><%= i %></button>
+                            <% } %>
                         </div>
                     </div>
 
@@ -63,11 +57,9 @@
                         <div class="value-choose-block">
                             <select name="rVal">
                                 <option disabled>Выберите значение R</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
+                                <% for (int i = 1; i <= 5; i++) { %>
+                                    <option value="<%= i %>"><%= i %></option>
+                                <% } %>
                             </select>
                         </div>
                     </div>
