@@ -76,9 +76,9 @@ public class AreaCheckServlet extends HttpServlet {
                 .append("<th>X</th>")
                 .append("<th>Y</th>")
                 .append("<th>R</th>")
-                .append("<th>Время попытки</th>")
-                .append("<th>Длительность</th>")
-                .append("<th>Попадание</th>")
+                .append("<th>Current time</th>")
+                .append("<th>Execution time</th>")
+                .append("<th>Hit</th>")
                 .append("</tr>");
 
         getHits(session).forEach((hit) -> {

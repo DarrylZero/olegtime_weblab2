@@ -41,7 +41,7 @@ public class PointHandler {
 
     private boolean isRectangleHit(Point point) {
         return point.getXVal() <= 0 && point.getXVal() >= -point.getRVal()
-                && point.getYVal() >= 0 && point.getYVal() <= point.getRVal() / 2;
+                && point.getYVal() <= 0 && point.getYVal() >= -point.getRVal();
     }
 
     private boolean isCircleHit(Point point) {
@@ -51,7 +51,7 @@ public class PointHandler {
 
     private boolean isTriangleHit(Point point) {
         return point.getXVal() >= 0 && point.getYVal() <= 0
-                && (point.getXVal() - point.getRVal()) <= point.getYVal();
+                && (2 * point.getXVal() - point.getRVal()) <= 2 * point.getYVal();
     }
 
 }

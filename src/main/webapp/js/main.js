@@ -17,15 +17,19 @@ $("#values-form").submit((e) => {
             renderTable(data);
 
             let graph = $(".area-wrapper");
-            let xVal = $("select[name=xVal]").val();
+            let xVal = $("#selectedValue").val();
             let yVal = $("input[name=yVal]").val();
-            let rVal = $("input[name=rVal]:checked").val();
+            let rVal = $("select[name=rVal]").val();
             let k = graph.width() / 2;
 
             graph.append(`<div class="dot" style="top: ${k - yVal * k / (1.25 * rVal) - 4}px; left: ${k + xVal * k / (1.25 * rVal) - 4}px" />`);
         }
     });
 })
+
+function setValue(value) {
+    $("#selectedValue").val(value);
+}
 
 function setButtonDisabled(isDisabled) {
     $("button[type=submit]").attr("disabled", isDisabled);
@@ -66,9 +70,9 @@ $("#go_back").on("click", (e) => {
 
 $(".area-wrapper").on("click", (e) => {
     hideError();
-    let rInput = $("input[name=rVal]:checked");
+    let rInput = $("select[name=rVal]");
 
-    if (!rInput.length) {
+    if (!rInput.val()) {
         showError("Параметр R не задан!");
         return;
     }

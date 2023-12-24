@@ -6,7 +6,7 @@ export function validate() {
 }
 
 function validateX() {
-    if ($("select[name=xVal]").length) {
+    if ($("selectedValue").val() !== "") {
         return true;
     }
     showError("Ошибка валидации X!");
@@ -14,8 +14,8 @@ function validateX() {
 }
 
 function validateY() {
-    const MAX_Y = 5;
-    const MIN_Y = -5;
+    const MAX_Y = 3;
+    const MIN_Y = -3;
     let valY = $("input[name=yVal]").val().replace(",", ".");
 
     if (!(/^(0$|-?\d*(\.\d*$)?|-?0\.\d*)$/.test(valY))) {
@@ -30,7 +30,7 @@ function validateY() {
 }
 
 function validateR() {
-    if ($("input[name=rVal]").is(":checked")) {
+    if ($("select[name=rVal]").length) {
         return true;
     }
     showError("Ошибка валидации R!");
