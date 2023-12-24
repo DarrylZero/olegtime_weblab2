@@ -17,7 +17,7 @@ $("#values-form").submit((e) => {
             renderTable(data);
 
             let graph = $(".area-wrapper");
-            let xVal = $("#selectedValue").val();
+            let xVal = $("input[name=xVal]").val();
             let yVal = $("input[name=yVal]").val();
             let rVal = $("select[name=rVal]").val();
             let k = graph.width() / 2;
@@ -27,8 +27,10 @@ $("#values-form").submit((e) => {
     });
 })
 
+//$("input[name=xVal]").val(123);
+
 function setValue(value) {
-    $("#selectedValue").val(value);
+    $("input[name=xVal]").val(value);
 }
 
 function setButtonDisabled(isDisabled) {

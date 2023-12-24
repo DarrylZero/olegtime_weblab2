@@ -6,7 +6,7 @@ export function validate() {
 }
 
 function validateX() {
-    if ($("selectedValue").val() !== "") {
+    if ($("input[name=xVal]").val().length) {
         return true;
     }
     showError("Ошибка валидации X!");

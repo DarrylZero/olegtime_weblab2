@@ -37,8 +37,8 @@
                 <div class="values">
                     <div class="values-row">
                         <div class="value-header">X</div>
-                        <div class="value-choose-block">
-                            <input type="hidden" id="selectedValue" name="xVal" value="" />
+                        <div class="value-choose-block" id="buttonsX">
+                            <input type="hidden" name="xVal"/>
                             <button onclick="setValue(-4)">-4</button>
                             <button onclick="setValue(-3)">-3</button>
                             <button onclick="setValue(-2)">-2</button>
