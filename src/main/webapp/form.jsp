@@ -40,7 +40,7 @@
                         <div class="value-choose-block" id="buttonsX">
                             <input type="hidden" name="xVal"/>
                             <% for (int i = -4; i <= 4; i++) { %>
-                               <button onclick="setValue(<%= i %>)"><%= i %></button>
+                               <button class="value-button" value="<%= i %>"><%= i %></button>
                             <% } %>
                         </div>
                     </div>

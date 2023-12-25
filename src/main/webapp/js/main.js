@@ -27,8 +27,6 @@ $("#values-form").submit((e) => {
     });
 })
 
-//$("input[name=xVal]").val(123);
-
 function setValue(value) {
     $("input[name=xVal]").val(value);
 }
@@ -42,15 +40,17 @@ $(window).on("load", (e) => {
 });
 
 $("#clear_table").on("click", (e) => {
-    e.preventDefault();
     $.ajax({
         url: "/",
         data: "clear=true",
         method: "GET",
-        success: () => {
-            window.location.replace("/");
-        }
+        success: () => { window.location.replace("/"); }
     });
+})
+
+$(".value-button").on("click", (e) => {
+    e.preventDefault();
+    setValue(e.target.value);
 })
 
 $("#clear_picture").on("click", (e) => {

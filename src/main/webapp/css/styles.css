@@ -155,6 +155,10 @@
     font-size: .8rem;
 }
 
+.value-button {
+  type: button
+}
+
 button {
     outline: none;
     cursor: pointer;
@@ -207,8 +211,8 @@ input[type=text]:focus {
 
 .dot {
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
     background-color: #8b0000;
     pointer-events: none;

@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AreaCheckServlet extends HttpServlet {
     public static final String HITS_DATA_ATTRIBUTE = "hitsData";
@@ -48,16 +51,7 @@ public class AreaCheckServlet extends HttpServlet {
     }
 
     private void saveHitInSession(HttpSession session, Hit hit) {
-        ArrayList<Hit> allHits = getHits(session);
-
-        try {
-            allHits.add(hit);
-        } catch (NullPointerException e) {
-            allHits = new ArrayList<Hit>();
-            allHits.add(hit);
-        }
-
-        session.setAttribute(HITS_DATA_ATTRIBUTE, allHits);
+        getHits(session).add(hit);
     }
 
     private void fillResponse(HttpServletResponse resp, HttpSession session) throws IOException {
@@ -68,9 +62,8 @@ public class AreaCheckServlet extends HttpServlet {
     }
 
     private String getTableHtml(HttpSession session) {
-        StringBuilder tableBuilder = new StringBuilder();
-
-        tableBuilder.append("<table>")
+        var tableBuilder = new StringBuilder()
+                .append("<table>")
                 .append("<tbody>")
                 .append("<tr>")
                 .append("<th>X</th>")
@@ -82,11 +75,12 @@ public class AreaCheckServlet extends HttpServlet {
                 .append("</tr>");
 
         getHits(session).forEach((hit) -> {
-            tableBuilder.append("<tr>")
+            tableBuilder
+                    .append("<tr>")
                     .append("<td>").append(hit.getXVal()).append("</td>")
                     .append("<td>").append(hit.getYVal()).append("</td>")
                     .append("<td>").append(hit.getRVal()).append("</td>")
-                    .append("<td>").append(hit.getCurrentTime()).append("</td>")
+                    .append("<td>").append(formatLocalDateTime(hit.getCurrentTime())).append("</td>")
                     .append("<td>").append(hit.getExecutionTime()).append("</td>")
                     .append("<td>").append(hit.isHit()).append("</td>")
                     .append("</tr>");
@@ -98,7 +92,15 @@ public class AreaCheckServlet extends HttpServlet {
         return tableBuilder.toString();
     }
 
-    private ArrayList<Hit> getHits(HttpSession session) {
-        return (ArrayList<Hit>) session.getAttribute(HITS_DATA_ATTRIBUTE);
+    private List<Hit> getHits(HttpSession session) {
+        if (session.getAttribute(HITS_DATA_ATTRIBUTE) == null) {
+            session.setAttribute(HITS_DATA_ATTRIBUTE, new ArrayList<>());
+        }
+
+        return (List<Hit>) session.getAttribute(HITS_DATA_ATTRIBUTE);
+    }
+
+    private String formatLocalDateTime(LocalDateTime localDateTime){
+        return localDateTime.format(DateTimeFormatter.ISO_DATE_TIME);
     }
 }
