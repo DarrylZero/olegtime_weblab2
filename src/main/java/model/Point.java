@@ -6,8 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Point {
-    private double xVal;
-    private double yVal;
-    private double rVal;
-    private long timezone;
+    private final double xVal;
+    private final double yVal;
 }

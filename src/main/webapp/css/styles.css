@@ -117,6 +117,13 @@
     grid-template-rows: 1fr auto;
 }
 
+#buttonsX {
+    background: #ff447d;
+    box-shadow: 0 0 20px #E40045;
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
 .values {
     display: grid;
     gap: 1rem;
@@ -146,6 +153,10 @@
 
 .value-text {
     font-size: .8rem;
+}
+
+.value-button {
+  type: button
 }
 
 button {
@@ -200,8 +211,8 @@ input[type=text]:focus {
 
 .dot {
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
     background-color: #8b0000;
     pointer-events: none;

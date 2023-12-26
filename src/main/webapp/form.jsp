@@ -14,7 +14,7 @@
     <div class="header sector">
         <div class="container">
             <div class="name">Тиме Олег Евгеньевич(P3225)</div>
-            <div class="option">1166</div>
+            <div class="option">861209</div>
         </div>
     </div>
     <div class="graph-block sector">
@@ -25,7 +25,7 @@
                 <c:forEach var="hit" items="${hitsData}">
                     <div class="dot"
                          style="top: ${175 - hit.getYVal()*175/(1.25*hit.getRVal())-4}px;
-                                 left: ${175 + hit.getXVal()*175/(1.25*hit.getRVal())-4}px;"></div>
+                                 left: ${175 + hit.getXVal() * 175 / (1.25*hit.getRVal())}px;"></div>
                 </c:forEach>
             </div>
         </div>
@@ -37,64 +37,33 @@
                 <div class="values">
                     <div class="values-row">
                         <div class="value-header">X</div>
-                        <div class="value-choose-block">
-                            <select name="xVal">
-                                <option disabled>Выберите значение X</option>
-                                <option value="-5">-5</option>
-                                <option value="-4">-4</option>
-                                <option value="-3">-3</option>
-                                <option value="-2">-2</option>
-                                <option value="-1">-1</option>
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
+                        <div class="value-choose-block" id="buttonsX">
+                            <input type="hidden" name="xVal"/>
+                            <% for (int i = -4; i <= 4; i++) { %>
+                               <button class="value-button" value="<%= i %>"><%= i %></button>
+                            <% } %>
                         </div>
                     </div>
+
                     <div class="values-row">
                         <div class="value-header">Y</div>
                         <div class="value-choose-block">
-                            <input type="text" name="yVal" placeholder="от -5 до 5">
+                            <input type="text" name="yVal" placeholder="от -3 до 3">
                         </div>
                     </div>
+
                     <div class="values-row">
                         <div class="value-header">R</div>
                         <div class="value-choose-block">
-                            <div class="value">
-                                <label>
-                                    <input type="radio" name="rVal" value="1">
-                                </label>
-                                <div class="value-text">1</div>
-                            </div>
-                            <div class="value">
-                                <label>
-                                    <input type="radio" name="rVal" value="1.5">
-                                </label>
-                                <div class="value-text">1.5</div>
-                            </div>
-                            <div class="value">
-                                <label>
-                                    <input type="radio" name="rVal" value="2">
-                                </label>
-                                <div class="value-text">2</div>
-                            </div>
-                            <div class="value">
-                                <label>
-                                    <input type="radio" name="rVal" value="2.5">
-                                </label>
-                                <div class="value-text">2.5</div>
-                            </div>
-                            <div class="value">
-                                <label>
-                                    <input type="radio" name="rVal" value="3">
-                                </label>
-                                <div class="value-text">3</div>
-                            </div>
+                            <select name="rVal">
+                                <option disabled>Выберите значение R</option>
+                                <% for (int i = 1; i <= 5; i++) { %>
+                                    <option value="<%= i %>"><%= i %></option>
+                                <% } %>
+                            </select>
                         </div>
                     </div>
+
                     <div class="error">
                         <div class="error-text">
                         </div>

@@ -8,10 +8,10 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class Hit {
-    private double xVal;
-    private double yVal;
-    private double rVal;
-    private LocalDateTime currentTime;
-    private long executionTime;
-    private boolean isHit;
+    private final double xVal;
+    private final double yVal;
+    private final double rVal;
+    private final LocalDateTime currentTime;
+    private final long executionTime;
+    private final boolean isHit;
 }
