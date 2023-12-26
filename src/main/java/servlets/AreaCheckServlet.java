@@ -3,6 +3,7 @@ package servlets;
 import exceptions.InvalidParameterException;
 import model.Hit;
 import model.Point;
+import model.PointData;
 import model.PointHandler;
 
 import javax.servlet.http.HttpServlet;
@@ -23,8 +24,8 @@ public class AreaCheckServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         try {
-            Hit currentHit = pointHandler.getHitInfo(buildPoint(req));
-            HttpSession session = req.getSession();
+            var currentHit = pointHandler.getHitInfo(buildPointData(req));
+            var session = req.getSession();
             saveHitInSession(session, currentHit);
             fillResponse(resp, session);
         } catch (InvalidParameterException e) {
@@ -32,22 +33,17 @@ public class AreaCheckServlet extends HttpServlet {
         }
     }
 
-    private Point buildPoint(HttpServletRequest req) {
-        double xVal;
-        double yVal;
-        double rVal;
-        long timezone;
-
+    private PointData buildPointData(HttpServletRequest req) {
         try {
-            xVal = Double.parseDouble(req.getParameter("xVal"));
-            yVal = Double.parseDouble(req.getParameter("yVal"));
-            rVal = Double.parseDouble(req.getParameter("rVal"));
-            timezone = Long.parseLong(req.getParameter("timezone"));
+            var xVal = Double.parseDouble(req.getParameter("xVal"));
+            var yVal = Double.parseDouble(req.getParameter("yVal"));
+            var rVal = Double.parseDouble(req.getParameter("rVal"));
+            var timezone = Long.parseLong(req.getParameter("timezone"));
+
+            return new PointData(new Point(xVal, yVal), rVal, timezone);
         } catch (NumberFormatException exception) {
             throw new InvalidParameterException("Некорректный формат параметров!");
         }
-
-        return new Point(xVal, yVal, rVal, timezone);
     }
 
     private void saveHitInSession(HttpSession session, Hit hit) {
@@ -96,7 +92,6 @@ public class AreaCheckServlet extends HttpServlet {
         if (session.getAttribute(HITS_DATA_ATTRIBUTE) == null) {
             session.setAttribute(HITS_DATA_ATTRIBUTE, new ArrayList<>());
         }
-
         return (List<Hit>) session.getAttribute(HITS_DATA_ATTRIBUTE);
     }
 
